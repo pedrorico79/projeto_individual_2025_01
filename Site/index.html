@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: aquamarine;
+        }
+
+        .img-logo {
+            height: 64px;
+            width: 64px;
+            border-radius: 15px;
+        }
+
+        .home {
+            background-image: url('../imagens-site/fundo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 80vh;
+        }
+
+        .home .home-texto {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        header{
+            display: flex;
+            justify-content: space-around;
+        }
+        .barra-navegacao{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <img class="img-logo" src="../imagens-site/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
+
+        <section class="barra-navegacao">
+            <nav>
+                <a href="">Home</a>
+                |
+                <a href="">Sobre mim</a>
+                |
+                <a href="">Recursos</a>
+                |
+                <a href="">Cadastro</a>
+                |
+                <a href="">Login</a>
+            </nav>
+        </section>
+
+    </header>
+
+
+    <main>
+        <section class="home">
+            <section class="home-texto">
+                <p>Violoncelo</p>
+                <p>Missão</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod accusantium impedit, harum ex non tempore quas exercitationem nulla ad voluptate odit, quasi, fuga repudiandae unde illum. Nulla odit atque quaerat.</p>
+            </section>
+        </section>
+
+        <section>
+            <h1>Informações e Curiosidades</h1>
+        </section>
+
+        <section>
+            <h1>Fotos</h1>
+        </section>
+
+        <section>
+            <h1>Vídeos</h1>
+        </section>
+    </main>
+
+
+    <footer>
+        <img class="img-logo" src="../imagens-site/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
+        <p>pedro.rico@sptech.school</p>
+        <p><a href="https://github.com/pedrorico79">GitHub</a></p>
+        <p>2025</p>
+    </footer>
+
+</body>
+
+</html>
