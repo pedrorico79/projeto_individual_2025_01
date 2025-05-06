@@ -14,7 +14,7 @@
         }
 
         header {
-            background-color: aquamarine;
+            background-color: rgb(98, 57, 37);
         }
 
         .img-logo {
@@ -41,15 +41,32 @@
             color: white;
         }
 
-        header{
+        header {
             display: flex;
             justify-content: space-around;
         }
-        .barra-navegacao{
+
+        .barra-navegacao {
             display: flex;
             justify-content: center;
             align-items: center;
-            
+            color: rgb(245, 235, 220);
+        }
+
+        .barra-navegacao a {
+            list-style: none;
+            text-decoration: none;
+            color: rgb(245, 235, 220);
+        }
+
+        .lista{
+            display: flex;
+            list-style: none;
+            gap: 8px;
+        }
+
+        .agora {
+            font-weight: 800;
         }
     </style>
 </head>
@@ -61,15 +78,27 @@
 
         <section class="barra-navegacao">
             <nav>
-                <a href="">Home</a>
-                |
-                <a href="">Sobre mim</a>
-                |
-                <a href="">Recursos</a>
-                |
-                <a href="">Cadastro</a>
-                |
-                <a href="">Login</a>
+                <ul class="lista">
+                    <li>
+                        <a href="#" class="agora">Home</a>
+                    </li>
+                    <li>|</li>
+                    <li>
+                        <a href="sobremim.html">Sobre mim</a>
+                    </li>
+                    <li>|</li>
+                    <li>
+                        <a href="recursos.html">Recursos</a>
+                    </li>
+                    <li>|</li>
+                    <li>
+                        <a href="cadastro.html">Cadastro</a>
+                    </li>
+                    <li>|</li>
+                    <li>
+                        <a href="login.html">Login</a>
+                    </li>
+                </ul>
             </nav>
         </section>
 
@@ -81,7 +110,9 @@
             <section class="home-texto">
                 <p>Violoncelo</p>
                 <p>Missão</p>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod accusantium impedit, harum ex non tempore quas exercitationem nulla ad voluptate odit, quasi, fuga repudiandae unde illum. Nulla odit atque quaerat.</p>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quod accusantium impedit, harum ex non
+                    tempore quas exercitationem nulla ad voluptate odit, quasi, fuga repudiandae unde illum. Nulla odit
+                    atque quaerat.</p>
             </section>
         </section>
 
