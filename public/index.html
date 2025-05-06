@@ -5,76 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        header {
-            background-color: rgb(98, 57, 37);
-        }
-
-        .img-logo {
-            height: 64px;
-            width: 64px;
-            border-radius: 15px;
-        }
-
-        .home {
-            background-image: url('../imagens-site/fundo.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
-            height: 80vh;
-        }
-
-        .home .home-texto {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 80vh;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .barra-navegacao {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: rgb(245, 235, 220);
-        }
-
-        .barra-navegacao a {
-            list-style: none;
-            text-decoration: none;
-            color: rgb(245, 235, 220);
-        }
-
-        .lista{
-            display: flex;
-            list-style: none;
-            gap: 8px;
-        }
-
-        .agora {
-            font-weight: 800;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
 
     <header>
-        <img class="img-logo" src="../imagens-site/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
+        <img class="img-logo" src="./assets/icon/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
 
         <section class="barra-navegacao">
             <nav>
@@ -126,12 +63,17 @@
 
         <section>
             <h1>Vídeos</h1>
+
+            <h3>Haydn - Cello Concerto in C - Bruno Philippe</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/JGBZIfaxfrM?si=2d4Fgkwc2SviiJFk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
         </section>
     </main>
 
 
     <footer>
-        <img class="img-logo" src="../imagens-site/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
+        <img class="img-logo" src="./assets/icon/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
         <p>pedro.rico@sptech.school</p>
         <p><a href="https://github.com/pedrorico79">GitHub</a></p>
         <p>2025</p>
