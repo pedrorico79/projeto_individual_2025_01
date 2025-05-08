@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 
     <header>
@@ -27,7 +29,25 @@
 
     </header>
 
-    <main>
+    <main class="cadastro-corpo">
+
+        <section class="cadastro-img">
+            <img src="./assets/imgs/side-img-contato.png" alt="">
+        </section>
+
+        <section class="cadastro-informacoes">
+            <h1>Entrar em sua conta</h1>
+            <h5>Não possui uma conta? <a href="cadastro.html">Cadastre-se</a></h5>
+            <section class="ipts">
+                <input class="input" type="text" id="ipt_email" placeholder="Email">
+            </section>
+            <section class="ipts">
+                <input class="input" type="password" id="ipt_senha" placeholder="Digite sua senha">
+            </section>
+            <section>
+                <button class="botao" onclick="logarConta()">Entrar</button>
+            </section>
+        </section>
 
     </main>
 
@@ -46,6 +66,7 @@
         <img class="img-footer" src="./assets/icon/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
 
     </footer>
-    
+
 </body>
+
 </html>

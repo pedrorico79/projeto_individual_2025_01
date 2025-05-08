@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
 
     <header>
@@ -27,12 +29,28 @@
 
     </header>
 
-    <main>
+    <main class="cadastro-corpo">
 
-        <section></section>
+        <section class="cadastro-img">
+            <img src="./assets/imgs/side-img-contato.png" alt="">
+        </section>
 
-        <section>
+        <section class="cadastro-informacoes">
             <h1>Crie sua conta</h1>
+            <h5>Já possui uma conta? <a href="login.html">Log in</a></h5>
+            <section class="ipts">
+                <input class="inputt" type="text" id="ipt_primeiro_nome" placeholder="Nome">
+                <input class="inputt" type="text" id="ipt_ultimo_nome" placeholder="Sobrenome">
+            </section>
+            <section class="ipts">
+                <input class="input" type="text" id="ipt_email" placeholder="Email">
+            </section>
+            <section class="ipts">
+                <input class="input" type="password" id="ipt_senha" placeholder="Digite sua senha">
+            </section>
+            <section>
+                <button class="botao" onclick="criarConta()">Criar conta</button>
+            </section>
         </section>
 
     </main>
@@ -52,6 +70,7 @@
         <img class="img-footer" src="./assets/icon/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
 
     </footer>
-    
+
 </body>
+
 </html>
