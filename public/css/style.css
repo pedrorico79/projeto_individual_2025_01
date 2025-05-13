@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Roboto";
 }
+
 
 /* HEADER */
 header {
@@ -92,18 +96,35 @@ header {
     justify-content: center;
     align-items: center;
     height: 80vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: rgb(245, 235, 220);
+}
+
+.home-texto p {
+    text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+.home-texto .p1 {
+    font-size: 2rem;
+}
+
+.home-texto .p2 {
+    font-size: 1.5rem;
+    font-style: italic;
 }
 
 
 /* BODY CADASTRO */
+
+body {
+    background-color: rgb(245, 235, 220);
+}
+
 .cadastro-corpo {
     display: flex;
     margin: 50px;
     justify-content: center;
     height: 405px;
-    background-color: blue;
 }
 
 .cadastro-img {
@@ -118,7 +139,7 @@ header {
 
 .cadastro-informacoes {
     width: 50%;
-    background-color: rgb(11, 11, 102);
+    background: linear-gradient(to right, #422b1b, #83502c);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -127,7 +148,7 @@ header {
 }
 
 .cadastro-informacoes h1 {
-    width: 100%;
+    text-align: center;
     font-size: 50px;
     display: flex;
     color: rgb(245, 235, 220);
@@ -145,16 +166,18 @@ a {
 }
 
 .input {
-    border: 2px solid #d17e10;
+    border: 2px solid #55250b;
     text-align: center;
     border-radius: 5px;
     margin: 0;
     height: 30px;
     width: 300px;
+    background-color: rgb(245, 235, 220);
 }
 
 .inputt {
-    border: 2px solid #d17e10;
+    background-color: rgb(245, 235, 220);
+    border: 2px solid #55250b;
     text-align: center;
     border-radius: 5px;
     margin: 0;
@@ -175,4 +198,244 @@ a {
     height: 30px;
     align-self: center;
     margin-top: 20px;
+}
+
+/* SOBRE MIM */
+.me-principal {
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+}
+
+.me-img {
+    width: 50%;
+}
+
+.me-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.me-informacoes {
+    width: 50%;
+    background-color: rgb(11, 11, 102);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+/* DEPOIS DO LOGIN */
+.pos-login {
+    display: flex;
+}
+
+.pl-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+/* CARDS CADASTRO */
+.card {
+    width: 50%;
+    background-color: #e5e5e5;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: palevioletred;
+    flex-direction: column;
+    height: fit-content;
+    padding: 20px 0;
+}
+
+.card h2 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.card_erro {
+    display: none;
+    background-color: #fff9eb;
+    color: rgb(56, 33, 4);
+    width: 230px;
+    position: fixed;
+    border-radius: 4px;
+    border: #d17e10 3px solid;
+    padding: 10px;
+    margin-right: 10%;
+}
+
+.card_erro #mensagem_erro {
+    font-weight: 500;
+    font-size: 20px;
+}
+
+#div_erros_login {
+    display: none
+}
+
+/* .loading-div {
+    width: 50px;
+    display: none;
+}
+
+.loading-div img {
+    height: 50px;
+    width: 50px;
+} */
+
+.loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+}
+
+.loading-div img {
+    height: 50px;
+    width: 50px;
+}
+
+
+
+/* index info e curiosidades */
+.informacoes {
+    background-color: #4b3a30;
+    border-top: 5px inset rgb(245, 235, 220);
+    border-bottom: 5px outset rgb(245, 235, 220);
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+}
+
+.informacoes h1 {
+    color: rgb(245, 235, 220);
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+    margin: 15px;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(-180deg);
+}
+
+.flip-card .flip-card-back {
+    transform: rotateY(-180deg);
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.flip-card-back,
+.flip-card-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    backface-visibility: hidden;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.flip-card-front {
+    background-color: rgb(245, 235, 220);
+    color: #333;
+}
+
+.flip-card-back {
+    background-color: #333;
+    color: rgb(245, 235, 220);
+}
+
+
+
+
+/* index fotos */
+
+.index-fotos {
+    padding: 50px;
+    /* background-color: #6f4d37; */
+    background: linear-gradient(to right, #422b1b, #83502c);
+    color: rgb(245, 235, 220);
+    font-size: 30px;
+}
+
+.index-fotos h3 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+.fotos-card {
+    display: flex;
+    justify-content: space-around;
+    white-space: normal;
+}
+
+.i-card img {
+    width: 300px;
+    border-radius: 25px;
+    margin-bottom: 45px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+#deitada,
+#deitada2,
+#deitada3 {
+    width: 400px;
+}
+
+
+/* VIDEOS */
+.videos {
+    background-color: #4b3a30;
+    border-top: 5px inset rgb(245, 235, 220);
+    border-bottom: 5px outset rgb(245, 235, 220);
+}
+
+#h1vid {
+    color: rgb(245, 235, 220);
+    font-size: 30px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.i-vid {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.i-vid h4 {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: rgb(245, 235, 220);
+}
+
+.i-vid iframe {
+    margin-bottom: 25px;
+    border-radius: 30px;
 }
