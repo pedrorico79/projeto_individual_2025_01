@@ -18,15 +18,17 @@
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
+<!-- onload="validarSessao(), atualizarFeed()" -->
 
-<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
+<body style="background-color: rgb(245, 235, 220);">
 
     <div class="janela">
 
 
         <div class="header-left">
 
-            <h1>AquaTech</h1>
+            <img class="img-logo" src="../assets/icon/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
+            <!-- <h1>AquaTech</h1> -->
 
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
@@ -58,9 +60,12 @@
 
 
             <div class="avisos">
+
                 <div id="alerta">
                 </div>
+
                 <div class="container">
+
                     <h1>Publicar um aviso</h1>
                     <div class="div-form">
                         <form id="form_postagem" method="post" onsubmit="return publicar()">
@@ -80,14 +85,19 @@
                             <br>
                             <button>Enviar</button>
                         </form>
+
                     </div>
                     <h1>Mural de Avisos</h1>
+
                     <div class="div-results">
                         <div id="feed_container" class="feed-container">
                         </div>
                     </div>
+
                 </div>
+
             </div>
+
         </div>
     </div>
 
@@ -99,7 +109,7 @@
 </html>
 
 <script>
-    
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     function limparFormulario() {

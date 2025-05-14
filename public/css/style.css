@@ -85,6 +85,7 @@ header {
 .home {
     background-image: url('../assets/imgs/fundo.jpg');
     background-size: cover;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-position: center;
     height: 80vh;
@@ -158,15 +159,16 @@ body {
 a {
     color: rgb(245, 235, 220);
     font-weight: normal;
+    margin-bottom: 3px;
 }
 
 .ipts {
     display: flex;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .input {
-    border: 2px solid #55250b;
+    border: 2px solid #272727;
     text-align: center;
     border-radius: 5px;
     margin: 0;
@@ -177,7 +179,7 @@ a {
 
 .inputt {
     background-color: rgb(245, 235, 220);
-    border: 2px solid #55250b;
+    border: 2px solid #272727;
     text-align: center;
     border-radius: 5px;
     margin: 0;
@@ -185,6 +187,20 @@ a {
     width: 150px;
 }
 
+.select {
+    background-color: rgb(245, 235, 220);
+    padding: 3px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 0px;
+    height: 30px;
+    width: 300px;
+    border: 2px solid #272727;
+}
+
+#ipt_naipe {
+    margin-top: 10px;
+}
 
 .botao {
     cursor: pointer;
@@ -197,7 +213,7 @@ a {
     width: 120px;
     height: 30px;
     align-self: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 /* SOBRE MIM */
@@ -227,20 +243,11 @@ a {
     padding: 50px;
 }
 
-/* DEPOIS DO LOGIN */
-.pos-login {
-    display: flex;
-}
-
-.pl-nav {
-    display: flex;
-    flex-direction: column;
-}
-
 
 
 
 /* CARDS CADASTRO */
+
 .card {
     width: 50%;
     background-color: #e5e5e5;

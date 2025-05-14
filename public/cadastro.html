@@ -60,6 +60,30 @@
             <section class="ipts">
                 <input class="input" type="password" id="ipt_senha_confirmar" placeholder="Confirme sua senha">
             </section>
+
+            <section>
+                <select name="instrumento" id="ipt_instrumento" class="select">
+                    <option value="#">Toca algum instrumento?</option>
+                    <option value="Violino">Violino</option>
+                    <option value="Viola">Viola</option>
+                    <option value="Violoncelo">Violoncelo</option>
+                    <option value="Contrabaixo">Contrabaixo</option>
+                    <option value="Outro">Outro</option>
+                    <option value="Nenhum">Nenhum</option>
+                </select>
+            </section>
+
+            <section>
+                <select name="naipe" id="ipt_naipe" class="select">
+                    <option value="#">Qual seu naipe favorito?</option>
+                    <option value="Cordas">Cordas</option>
+                    <option value="Madeiras">Madeiras</option>
+                    <option value="Metais">Metais</option>
+                    <option value="Percussao">Percussão</option>
+                    <option value="Teclas">Teclas</option>
+                </select>
+            </section>
+
             <section>
                 <button class="botao" onclick="cadastrar()">Criar conta</button>
             </section>
@@ -108,6 +132,8 @@
         var emailVar = ipt_email.value;
         var senhaVar = ipt_senha.value;
         var confirmacaoSenhaVar = ipt_senha_confirmar.value;
+        var instrumentoVar = ipt_instrumento.value;
+        var naipeVar = ipt_naipe.value;
         // var codigoVar = codigo_input.value;
         var idEmpresaVincular
 
@@ -117,8 +143,9 @@
             sobrenomeVar == "" ||
             emailVar == "" ||
             senhaVar == "" ||
-            confirmacaoSenhaVar == "" // ||
-            // codigoVar == ""
+            confirmacaoSenhaVar == "" ||
+            instrumentoVar == "#" ||
+            naipeVar == "#"
         ) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML =
@@ -132,7 +159,9 @@
             !emailVar.includes("@") ||
             !emailVar.includes(".") ||
             senhaVar.length < 3 ||
-            confirmacaoSenhaVar != senhaVar
+            confirmacaoSenhaVar != senhaVar ||
+            instrumentoVar == "#" ||
+            naipeVar == "#"
         ) {
             cardErro.style.display = "block";
             mensagem_erro.innerHTML =
@@ -169,6 +198,8 @@
                 // Agora vá para o arquivo routes/usuario.js
                 nomeServer: nomeVar,
                 sobrenomeServer: sobrenomeVar,
+                instrumentoServer: instrumentoVar,
+                naipeServer: naipeVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar
                 // idEmpresaVincularServer: idEmpresaVincular
