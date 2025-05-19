@@ -120,7 +120,7 @@ body {
   position: relative;
   top: 0;
   left: 20%;
-  background-color: #161618;
+  background-color: rgb(245, 235, 220);
   height: 100vh;
   overflow: auto;
 }
@@ -348,8 +348,8 @@ canvas {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid #32b9cd;
-  background-color: #212124;
+  border-right: 3px outset rgb(245, 235, 220);
+  background-color: rgb(98, 57, 37);
 }
 
 .dash-right {
@@ -375,7 +375,7 @@ canvas {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color: rgb(245, 235, 220);
   font-weight: 300;
   font-size: 1.2rem;
 }
@@ -425,4 +425,9 @@ canvas {
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
+}
+
+.grafico-preferencia {
+  padding: 20px;
+  height: 650px;
 }

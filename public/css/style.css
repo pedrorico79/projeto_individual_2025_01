@@ -136,6 +136,8 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
 }
 
 .cadastro-informacoes {
@@ -146,6 +148,8 @@ body {
     justify-content: center;
     align-items: center;
     padding: 50px;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
 }
 
 .cadastro-informacoes h1 {
@@ -398,7 +402,7 @@ a {
 
 .fotos-card {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     white-space: normal;
 }
 

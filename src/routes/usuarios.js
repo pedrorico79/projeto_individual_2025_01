@@ -12,4 +12,10 @@ router.post("/autenticar", function (req, res) {
     usuarioController.autenticar(req, res);
 });
 
+
+// CRIEI
+router.post("/exibirGrafico1", function (req, res) {
+    usuarioController.exibirGrafico1(req, res);
+})
+
 module.exports = router;

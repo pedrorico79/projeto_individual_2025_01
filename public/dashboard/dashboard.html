@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaTech | Dashboards</title>
 
-    
+
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -26,53 +26,57 @@
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- <body onload=" atualizarFeed()"> -->
+<!-- atualizarFeed(), -->
 
-<body>
+<body onload="exibirGrafico1()"></body>
 
-    <div class="janela">
-        <div class="header-left">
-            <h1>AquaTech</h1>
+<div class="janela">
+    <div class="header-left">
+        <img class="img-logo" src="../assets/icon/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
 
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
+        <!-- <h1>AquaTech</h1> -->
 
-            <div class="btn-nav-white">
-                <a href="./cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
+        <div class="hello">
+            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+        </div>
 
-            <div class="btn-nav">
+        <div class="btn-nav-white">
+            <a href="./cards.html">
+                <h3>Aquários</h3>
+            </a>
+        </div>
 
-                <h3>Gráficos</h3>
+        <div class="btn-nav">
 
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
+            <h3>Gráficos</h3>
 
         </div>
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
-
-            <div class="btns-dash" id="btnAquario">
-                <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-            </div>
-            <div id="graficos">
-            </div>
+        <div class="btn-nav-white">
+            <a href="./mural.html">
+                <h3>Mural de Avisos</h3>
+            </a>
         </div>
+
+        <div class="btn-logout" onclick="limparSessao()">
+            <h3>Sair</h3>
+        </div>
+
     </div>
+
+    <div class="dash">
+        <div id="alerta"></div>
+
+        <div class="btns-dash" id="btnAquario">
+            <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
+        </div>
+
+        <div class="grafico-preferencia">
+            <canvas id="myChart1"></canvas>
+        </div>
+
+    </div>
+</div>
 
 
 </body>
@@ -80,40 +84,88 @@
 </html>
 
 <script>
+    // CRIEI
+
+    let labels1 = [];
+
+    let data1 = {
+        labels: labels1,
+        datasets: [{
+            label: 'Naipe favorito',
+            data: [],
+            fill: false,
+            backgroundColor: 'rgba(56, 30, 17, 0.6)',
+            borderColor: 'rgb(56, 30, 17)',
+            borderWidth: 2,
+            tension: 0.1
+        }]
+    };
+
+    const config1 = {
+        type: 'bar',
+        data: data1,
+        options: {
+
+            animation: false,
+            hover: {
+                mode: 'index',
+                animationDuration: 0
+            },
+
+            scales: {
+                y: {
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            }
+        }
+    };
+
+    const myChart1 = new Chart(
+        document.getElementById('myChart1'),
+        config1
+    );
+
+
+    function exibirGrafico1() {
+        fetch("/usuarios/exibirGrafico1", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(function (resposta) {
+                console.log("Função do exibirGrafico1");
+                console.log("resposta:", resposta);
+
+                if (resposta.ok) {
+                    resposta.json().then((resultado) => {
+                        console.log(resultado);
+
+                        const naipes = resultado.map(dado => dado.naipe);
+                        const quantidadeUsuarios = resultado.map(dado => dado["count(*)"]);
+
+                        myChart1.data.labels = naipes;
+                        myChart1.data.datasets[0].data = quantidadeUsuarios;
+
+                        myChart1.update();
+                    });
+                } else {
+                    throw "Houve erro ao puxar";
+                }
+            })
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
+            });
+    }
+
+
+    //
+
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
     let proximaAtualizacao;
-
-    window.onload = exibirAquariosDoUsuario();
-
-    function exibirAquariosDoUsuario() {
-        var aquarios = JSON.parse(sessionStorage.AQUARIOS);
-        aquarios.forEach(item => {
-            document.getElementById("btnAquario").innerHTML += `
-            <button class="btn-chart" onclick="exibirAquario(${item.id})" id="btnAquario${item.id}">${item.descricao}</button>
-            `
-
-            document.getElementById("graficos").innerHTML += `
-                <div id="grafico${item.id}" class="display-none">
-                    <h3 class="tituloGraficos">
-                        <span id="tituloAquario${item.id}">${item.descricao}</span>
-                    </h3>
-                    <div class="graph">
-                        <canvas id="myChartCanvas${item.id}"></canvas>
-                    </div>
-                    <div class="label-captura">
-                        <p id="avisoCaptura${item.id}" style="color: white"></p>
-                    </div>
-                </div>
-            `
-
-            obterDadosGrafico(item.id)
-        });
-
-        if (aquarios.length > 0) {
-            exibirAquario(aquarios[0].id)
-        }
-    }
 
     function alterarTitulo(idAquario) {
         var tituloAquario = document.getElementById(`tituloAquario${idAquario}`)

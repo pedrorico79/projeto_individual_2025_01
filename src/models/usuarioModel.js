@@ -3,7 +3,7 @@ var database = require("../database/config")
 function autenticar(email, senha) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function entrar(): ", email, senha)
     var instrucaoSql = `
-        SELECT id, nome, sobrenome, instrumento, naipe, email FROM usuario WHERE email = '${email}' AND senha = '${senha}';
+        SELECT nome, sobrenome, email, senha FROM usuario WHERE email = '${email}' AND senha = '${senha}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -22,7 +22,17 @@ function cadastrar(nome, sobrenome, instrumento, naipe, email, senha) {
     return database.executar(instrucaoSql);
 }
 
+// CRIEI
+function exibirGrafico1() {
+    console.log('buscando dados do BD grafico')
+
+    var instrucaoSql = `select naipe, count(*) from usuario group by naipe;`
+
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    exibirGrafico1
 };
