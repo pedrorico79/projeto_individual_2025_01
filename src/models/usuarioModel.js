@@ -26,7 +26,15 @@ function cadastrar(nome, sobrenome, instrumento, naipe, email, senha) {
 function exibirGrafico1() {
     console.log('buscando dados do BD grafico')
 
-    var instrucaoSql = `select naipe, count(*) from usuario group by naipe;`
+    var instrucaoSql = `select naipe, count(*) as quantidade from usuario group by naipe;`
+
+    return database.executar(instrucaoSql);
+}
+
+function exibirGrafico2() {
+    console.log('buscando dados do BD grafico')
+
+    var instrucaoSql = `select instrumento, count(*) as quantidade from usuario group by instrumento;`
 
     return database.executar(instrucaoSql);
 }
@@ -34,5 +42,6 @@ function exibirGrafico1() {
 module.exports = {
     autenticar,
     cadastrar,
-    exibirGrafico1
+    exibirGrafico1,
+    exibirGrafico2
 };

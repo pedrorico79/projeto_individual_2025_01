@@ -18,4 +18,8 @@ router.post("/exibirGrafico1", function (req, res) {
     usuarioController.exibirGrafico1(req, res);
 })
 
+router.post("/exibirGrafico2", function (req, res) {
+    usuarioController.exibirGrafico2(req, res);
+})
+
 module.exports = router;

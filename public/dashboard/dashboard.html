@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
@@ -28,7 +29,7 @@
 
 <!-- atualizarFeed(), -->
 
-<body onload="exibirGrafico1()"></body>
+<body onload="exibirGrafico1(), exibirGrafico2()"></body>
 
 <div class="janela">
     <div class="header-left">
@@ -41,8 +42,8 @@
         </div>
 
         <div class="btn-nav-white">
-            <a href="./cards.html">
-                <h3>Aquários</h3>
+            <a href="./quiz.html">
+                <h3>Quiz</h3>
             </a>
         </div>
 
@@ -71,8 +72,14 @@
             <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
         </div>
 
-        <div class="grafico-preferencia">
-            <canvas id="myChart1"></canvas>
+        <div class="graficos">
+            <div class="grafico-preferencia">
+                <canvas id="myChart1"></canvas>
+            </div>
+
+            <div class="grafico-preferencia">
+                <canvas id="myChart2"></canvas>
+            </div>
         </div>
 
     </div>
@@ -86,12 +93,14 @@
 <script>
     // CRIEI
 
+    //grafico 1
+
     let labels1 = [];
 
     let data1 = {
         labels: labels1,
         datasets: [{
-            label: 'Naipe favorito',
+            label: 'Naipe',
             data: [],
             fill: false,
             backgroundColor: 'rgba(56, 30, 17, 0.6)',
@@ -116,6 +125,15 @@
                 y: {
                     ticks: {
                         stepSize: 1
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Naipe favorito por número de usuários',
+                    font: {
+                        size: 15
                     }
                 }
             }
@@ -144,7 +162,7 @@
                         console.log(resultado);
 
                         const naipes = resultado.map(dado => dado.naipe);
-                        const quantidadeUsuarios = resultado.map(dado => dado["count(*)"]);
+                        const quantidadeUsuarios = resultado.map(dado => dado.quantidade);
 
                         myChart1.data.labels = naipes;
                         myChart1.data.datasets[0].data = quantidadeUsuarios;
@@ -161,7 +179,93 @@
     }
 
 
-    //
+    // grafico 2
+
+    let labels2 = [];
+
+    let data2 = {
+        labels: labels2,
+        datasets: [{
+            label: 'Instrumento musical',
+            data: [],
+            fill: false,
+            backgroundColor: 'rgba(56, 30, 17, 0.6)',
+            borderColor: 'rgb(56, 30, 17)',
+            borderWidth: 2,
+            tension: 0.1
+        }]
+    };
+
+    const config2 = {
+        type: 'bar',
+        data: data2,
+        options: {
+
+            animation: false,
+            hover: {
+                mode: 'index',
+                animationDuration: 0
+            },
+
+            scales: {
+                y: {
+                    ticks: {
+                        stepSize: 1
+                    }
+                }
+            },
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Instrumento musical tocado por número de usuários',
+                    font: {
+                        size: 15
+                    }
+                }
+            }
+        }
+    };
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+
+
+    function exibirGrafico2() {
+        fetch("/usuarios/exibirGrafico2", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+            .then(function (resposta) {
+                console.log("Função do exibirGrafico2");
+                console.log("resposta:", resposta);
+
+                if (resposta.ok) {
+                    resposta.json().then((resultado) => {
+                        console.log(resultado);
+
+                        const instrumento = resultado.map(dado => dado.instrumento);
+                        const quantidadeUsuarios = resultado.map(dado => dado.quantidade);
+
+                        myChart2.data.labels = instrumento;
+                        myChart2.data.datasets[0].data = quantidadeUsuarios;
+
+                        myChart2.update();
+                    });
+                } else {
+                    throw "Houve erro ao puxar";
+                }
+            })
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
+            });
+    }
+
+
+    // --------
 
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 

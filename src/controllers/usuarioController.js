@@ -106,8 +106,25 @@ function exibirGrafico1(req, res) {
 
 }
 
+function exibirGrafico2(req, res) {
+    usuarioModel.exibirGrafico2()
+        .then(function (resposta) {
+            if (resposta.length > 0) {
+                res.status(200).json(resposta);
+            } else {
+                res.status(204).send("nenhum resultado encontrado");
+            }
+        })
+
+        .catch(function (erro) {
+            res.status(500).json(erro.sqlMessage);
+        });
+
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    exibirGrafico1
+    exibirGrafico1,
+    exibirGrafico2
 }
