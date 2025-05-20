@@ -346,8 +346,7 @@
         }
     }
 
-    //criei
-    let porcentagemFinal = pontuacaoFinal / quantidadeDeQuestoes;
+
 
     function finalizarJogo() {
         let textoParaMensagemFinal = null
@@ -381,11 +380,17 @@
         // btnConcluir.disabled = true
         btnTentarNovamente.disabled = false
 
+        cadastrar(pontuacaoFinal);
     }
 
-    function cadastrar() {
+
+    console.log(sessionStorage.ID_USUARIO)
 
 
+    function cadastrar(pontuacaoFinal) {
+
+        let id = sessionStorage.ID_USUARIO;
+        console.log(id)
 
         fetch("/quiz/cadastrar", {
             method: "POST",
@@ -393,8 +398,8 @@
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                fkUsuarioServer,
-                pontuacaoServer: porcentagemFinal
+                fkUsuarioServer: id,
+                pontuacaoServer: pontuacaoFinal
             }),
         })
             .then(function (resposta) {
