@@ -225,31 +225,169 @@ a {
 }
 
 /* SOBRE MIM */
-.me-principal {
-    display: flex;
-    justify-content: center;
-    background-color: blue;
+
+.home-sobremim {
+    background-image: url("../assets/sobre-mim/camerata-1.jpg");
+    background-position: left;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 80vh;
 }
 
+
+.me-principal {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-inline: 73px;
+    box-sizing: border-box;
+    height: 80vh;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
 .me-img {
-    width: 20%;
+    padding: 0px;
+    padding-right: 0px;
 }
 
 .me-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 118%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 35px;
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.9);
 }
 
-.me-informacoes {
+.me-informacoes-card {
+    font-size: 27px;
     width: 50%;
-    background-color: rgb(11, 11, 102);
+    height: fit-content;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    padding: 15px;
+    margin-top: 210px;
+    gap: 5px;
+    color: rgb(245, 235, 220);
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 35px;
+    text-align: center;
 }
+
+.me-informacoes {
+    /* background-color: #4b3a30; */
+    background: linear-gradient(to right, #422b1b, #83502c);
+    color: rgb(245, 235, 220);
+    padding: 60px;
+    font-size: 18px;
+    border-top: 5px inset rgb(245, 235, 220);
+    /* border-bottom: 5px outset rgb(245, 235, 220); */
+    display: flex;
+    gap: 50px;
+    text-align: justify;
+}
+
+.me-informacoes p {
+    background-color: rgba(49, 34, 19, 0.5);
+    padding: 15px;
+    border-radius: 25px;
+    text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+
+/* fotos e videos */
+.videos2 {
+    background-color: #4b3a30;
+    border-top: 5px inset rgb(245, 235, 220);
+    border-bottom: 5px outset rgb(245, 235, 220);
+    display: flex;
+    justify-content: center;
+}
+
+.videos2-menor {
+    width: 85%;
+}
+
+#h1vid2 {
+    color: rgb(245, 235, 220);
+    font-size: 30px;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+/* vid2 */
+.i-vid2 {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.i-vid2 img {
+    border-radius: 35px;
+    height: 300px;
+    width: auto;
+}
+
+.i-vid2 video {
+    border-radius: 35px;
+}
+
+/* vid-center */
+.i-vid-center {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.i-vid-center img {
+    height: auto;
+    width: 100%;
+    border-radius: 35px;
+}
+
+.i-vid-center video {
+    border-radius: 35px;
+}
+
+.i-vid-recital {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.i-vid-recital img {
+    height: auto;
+    width: 60%;
+    border-radius: 35px;
+}
+
+.video-amigos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.video-amigos video {
+    border-radius: 25px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
 
 
 
