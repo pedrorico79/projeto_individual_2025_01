@@ -8,9 +8,15 @@ router.post("/cadastrar", function (req, res) {
     quizController.cadastrar(req, res);
 });
 
-router.get("/listar", function (req, res) {
+router.get("/listarIndividual/:id", function (req, res) {
     // ex função a ser chamada quando acessar /quiz/listar
-    quizController.listar(req, res);
+    quizController.listarIndividual(req, res);
 });
+
+router.get("/listarGeral", function (req, res) {
+    // ex função a ser chamada quando acessar /quiz/listar
+    quizController.listarGeral(req, res);
+});
+
 
 module.exports = router;

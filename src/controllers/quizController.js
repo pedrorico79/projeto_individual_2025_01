@@ -1,12 +1,26 @@
 var quizModel = require("../models/quizModel");
 
-function listar(req, res) {
-    quizModel.listar().then(function (resultado) {
-        // ex: precisamos informar que o resultado voltará para o front-end como uma resposta em json
-        res.status(200).json(resultado);
+function listarIndividual(req, res) {
+    let id = req.params.id;
+
+    quizModel.listarIndividual(id).then(function (resultado) {
+
+        res.status(200).send(resultado);
     }).catch(function (erro) {
         res.status(500).json(erro.sqlMessage);
     })
+
+}
+
+
+function listarGeral(req, res) {
+    quizModel.listarGeral().then(function (resultado) {
+
+        res.status(200).send(resultado);
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+
 }
 
 function cadastrar(req, res) {
@@ -20,7 +34,7 @@ function cadastrar(req, res) {
     } else {
 
         quizModel.cadastrar(fkUsuario, pontuacao).then(function (resposta) {
-            res.status(200).send("Carro criado com sucesso");
+            res.status(200).send("Dados inseridos com sucesso");
         }).catch(function (erro) {
             res.status(500).json(erro.sqlMessage);
         })
@@ -28,6 +42,7 @@ function cadastrar(req, res) {
 }
 
 module.exports = {
-    listar,
-    cadastrar
+    cadastrar,
+    listarIndividual,
+    listarGeral
 }

@@ -323,7 +323,7 @@ a {
 /* vid2 */
 .i-vid2 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     text-align: center;
     align-items: center;
     margin-top: 15px;
