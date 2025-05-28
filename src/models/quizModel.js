@@ -3,13 +3,13 @@ var database = require("../database/config")
 
 
 function listarIndividual(id) {
-    var instrucao = `select pontuacao, count(*) as quantidade from quiz where fkusuario = '${id}' group by pontuacao;`;
+    var instrucao = `select pontuacao, count(*) as quantidade from quiz where fkusuario = '${id}' group by pontuacao order by pontuacao asc;`;
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }
 
 function listarGeral() {
-    var instrucao = `select pontuacao, count(*) as quantidade from quiz group by pontuacao;`
+    var instrucao = `select pontuacao, count(*) as quantidade from quiz group by pontuacao order by pontuacao asc;`
     console.log("Executando a instrução SQL: \n" + instrucao);
     return database.executar(instrucao);
 }

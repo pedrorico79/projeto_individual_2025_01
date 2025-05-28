@@ -386,8 +386,8 @@ canvas {
 
 .btn-nav {
   width: 40%;
-  color: white;
-  background-color: #e6005a;
+  color: rgb(245, 235, 220);
+  background-color: #d17e10;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
@@ -395,15 +395,15 @@ canvas {
 
 .btn-nav-white {
   width: 40%;
-  background-color: white;
-  border: 3px solid #e6005a;
+  background-color: rgb(245, 235, 220);
+  border: 3px solid #d17e10;
   border-radius: 5px;
   text-align: center;
   padding: 2% 5%;
 }
 
 .btn-nav-white h3 {
-  color: #e6005a;
+  color: #d17e10;
   padding: 0;
   margin: 0;
 }
@@ -418,8 +418,8 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
-  color: white;
+  background-color: #d17e10;
+  color: rgb(245, 235, 220);
   border-radius: 10px;
   text-align: center;
   padding: 10px 15px;
