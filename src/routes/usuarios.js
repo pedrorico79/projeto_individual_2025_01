@@ -14,12 +14,15 @@ router.post("/autenticar", function (req, res) {
 
 
 // CRIEI
-router.post("/exibirGrafico1", function (req, res) {
+router.get("/exibirGrafico1", function (req, res) {
     usuarioController.exibirGrafico1(req, res);
 })
 
-router.post("/exibirGrafico2", function (req, res) {
+router.get("/exibirGrafico2", function (req, res) {
     usuarioController.exibirGrafico2(req, res);
 })
 
+router.get("/kpiUsuarios", function (req, res) {
+    usuarioController.kpiUsuarios(req, res);
+})
 module.exports = router;

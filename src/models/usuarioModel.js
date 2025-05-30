@@ -39,9 +39,16 @@ function exibirGrafico2() {
     return database.executar(instrucaoSql);
 }
 
+function kpiUsuarios() {
+    var instrucaoSql = `select count(*) as quantidade from usuario;`
+
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     exibirGrafico1,
-    exibirGrafico2
+    exibirGrafico2,
+    kpiUsuarios
 };

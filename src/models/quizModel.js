@@ -25,8 +25,14 @@ function cadastrar(fkUsuario, pontuacao) {
     return database.executar(instrucao);
 }
 
+function listarMedia() {
+    var instrucao = `select round(avg(pontuacao),1) as mediapontuacao from quiz;`;
+    return database.executar(instrucao);
+}
+
 module.exports = {
     cadastrar,
     listarIndividual,
-    listarGeral
+    listarGeral,
+    listarMedia
 };

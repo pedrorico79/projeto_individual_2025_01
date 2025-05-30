@@ -33,73 +33,76 @@
 
 <!-- atualizarFeed(), -->
 
-<body onload="validarSessao(), exibirGrafico1(), exibirGrafico2(), listarGeral(), listarIndividual()"></body>
+<body
+    onload="validarSessao(), exibirGrafico1(), exibirGrafico2(), listarGeral(), listarIndividual(), kpiUsuarios(), listarMedia()">
 
-<div class="janela">
-    <div class="header-left">
-        <img class="img-logo" src="../assets/icon/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
+    <div class="janela">
+        <div class="header-left">
+            <img class="img-logo" src="../assets/icon/logo.jpg" alt="Logotipo foto aproximada F violoncelo">
 
-        <!-- <h1>AquaTech</h1> -->
+            <!-- <h1>AquaTech</h1> -->
 
-        <div class="hello">
-            <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./quiz.html">
+                    <h3>Quiz</h3>
+                </a>
+            </div>
+
+            <div class="btn-nav">
+
+                <h3>Gráficos</h3>
+
+            </div>
+
+            <div class="btn-nav-white">
+                <a href="./mural.html">
+                    <h3>Mural de Avisos</h3>
+                </a>
+            </div>
+
+            <div class="btn-logout" onclick="limparSessao()">
+                <h3>Sair</h3>
+            </div>
+
         </div>
 
-        <div class="btn-nav-white">
-            <a href="./quiz.html">
-                <h3>Quiz</h3>
-            </a>
-        </div>
+        <div class="dash">
 
-        <div class="btn-nav">
+            <div class="graficos">
+                <h2>Estatísticas gerais</h2>
 
-            <h3>Gráficos</h3>
-
-        </div>
-
-        <div class="btn-nav-white">
-            <a href="./mural.html">
-                <h3>Mural de Avisos</h3>
-            </a>
-        </div>
-
-        <div class="btn-logout" onclick="limparSessao()">
-            <h3>Sair</h3>
-        </div>
-
-    </div>
-
-    <div class="dash">
-        <div id="alerta"></div>
-
-        <div class="btns-dash" id="btnAquario">
-            <!-- O gráfico é chamado de acordo com o id (fk_aquario) do banco  -->
-        </div>
-
-        <div class="graficos">
-            <h2>Estatísticas gerais</h2>
-            <div class="grafico-preferencia">
                 <section>
-                    <canvas id="myChart1"></canvas>
+                    <section id="kpi"></section>
+                    <section id="mediaQuiz"></section>
                 </section>
-                <section class="barras-menor">
-                    <canvas id="myChart2"></canvas>
-                </section>
+
+                <div class="grafico-preferencia">
+                    <section class="pie">
+                        <canvas id="myChart1"></canvas>
+                    </section>
+                    <section class="barras-menor">
+                        <canvas id="myChart2"></canvas>
+                    </section>
+                </div>
+
+                <h2>Pontuação geral</h2>
+                <div class="grafico-preferencia">
+                    <canvas id="myChartGeral"></canvas>
+                </div>
+
+                <h2>Pontuação individual</h2>
+                <div class="grafico-preferencia">
+                    <canvas id="myChartIndividual"></canvas>
+                </div>
             </div>
 
-            <h2>Gráfico geral</h2>
-            <div class="grafico-preferencia">
-                <canvas id="myChartGeral"></canvas>
-            </div>
 
-            <div class="grafico-preferencia">
-                <canvas id="myChartIndividual"></canvas>
-            </div>
         </div>
-
-
     </div>
-</div>
 
 
 </body>
@@ -116,7 +119,7 @@
     let data1 = {
         labels: labels1,
         datasets: [{
-            label: 'Naipe',
+            label: 'Quantidade de usuários',
             data: [],
             fill: false,
             backgroundColor: [
@@ -148,16 +151,21 @@
                 mode: 'index',
                 animationDuration: 0
             },
+
             plugins: {
                 title: {
                     display: true,
                     text: 'Naipe favorito por número de usuários',
                     font: {
-                        size: 15
+                        size: 14
                     }
+                },
+                legend: {
+                    position: 'left'
                 }
             }
         }
+
     };
 
     const myChart1 = new Chart(
@@ -167,25 +175,35 @@
 
 
     function exibirGrafico1() {
-        fetch("/usuarios/exibirGrafico1", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        // fetch("/usuarios/exibirGrafico1", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
+        // })
+        fetch("/usuarios/exibirGrafico1")
             .then(function (resposta) {
                 console.log("Função do exibirGrafico1");
                 console.log("resposta:", resposta);
 
                 if (resposta.ok) {
-                    resposta.json().then((resultado) => {
-                        console.log(resultado);
 
-                        const naipes = resultado.map(dado => dado.naipe);
-                        const quantidadeUsuarios = resultado.map(dado => dado.quantidade);
+                    resposta.json().then(function (resposta) {
 
-                        myChart1.data.labels = naipes;
-                        myChart1.data.datasets[0].data = quantidadeUsuarios;
+                        console.log(resposta);
+
+                        // let naipesArray = [];
+                        // let quantidadeUsuariosArray = [];
+                        for (let i = 0; i < resposta.length; i++) {
+                            labels1.push(resposta[i].naipe);
+                            data1.datasets[0].data.push(resposta[i].quantidade);
+                        }
+
+                        // const naipes = resposta.map(dado => dado.naipe);
+                        // const quantidadeUsuarios = resposta.map(dado => dado.quantidade);
+
+                        // myChart1.data.labels = naipes;
+                        // myChart1.data.datasets[0].data = quantidadeUsuarios;
 
                         myChart1.update();
                     });
@@ -199,6 +217,8 @@
     }
 
 
+
+
     // grafico 2
 
     let labels2 = [];
@@ -206,7 +226,7 @@
     let data2 = {
         labels: labels2,
         datasets: [{
-            label: 'Instrumento musical',
+            label: 'Quantidade de usuários',
             data: [],
             fill: false,
             backgroundColor: 'rgba(56, 30, 17, 0.6)',
@@ -239,7 +259,7 @@
                     display: true,
                     text: 'Instrumento musical tocado por número de usuários',
                     font: {
-                        size: 15
+                        size: 14
                     }
                 }
             }
@@ -253,25 +273,37 @@
 
 
     function exibirGrafico2() {
-        fetch("/usuarios/exibirGrafico2", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        // fetch("/usuarios/exibirGrafico2", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json"
+        //     }
+        // })
+        fetch("/usuarios/exibirGrafico2")
             .then(function (resposta) {
                 console.log("Função do exibirGrafico2");
                 console.log("resposta:", resposta);
 
                 if (resposta.ok) {
-                    resposta.json().then((resultado) => {
+                    resposta.json().then(function (resultado) {
                         console.log(resultado);
 
-                        const instrumento = resultado.map(dado => dado.instrumento);
-                        const quantidadeUsuarios = resultado.map(dado => dado.quantidade);
+                        let instrumentoArray = [];
+                        let quantidadeArray = [];
+                        for (let i = 0; i < resultado.length; i++) {
+                            instrumentoArray.push(resultado[i].instrumento);
+                            quantidadeArray.push(resultado[i].quantidade);
+                        }
+                        for (let j = 0; j < instrumentoArray.length; j++) {
+                            labels2.push(instrumentoArray[j]);
+                            data2.datasets[0].data.push(quantidadeArray[j]);
+                        }
 
-                        myChart2.data.labels = instrumento;
-                        myChart2.data.datasets[0].data = quantidadeUsuarios;
+                        // const instrumento = resultado.map(dado => dado.instrumento);
+                        // const quantidadeUsuarios = resultado.map(dado => dado.quantidade);
+
+                        // myChart2.data.labels = instrumento;
+                        // myChart2.data.datasets[0].data = quantidadeUsuarios;
 
                         myChart2.update();
                     });
@@ -295,7 +327,8 @@
             backgroundColor: 'rgba(56, 30, 17, 0.6)',
             borderColor: 'rgb(56, 30, 17)',
             borderWidth: 2,
-            tension: 0.1
+            tension: 0.1,
+            maxBarThickness: 80
         }]
     };
 
@@ -403,7 +436,8 @@
             backgroundColor: 'rgba(56, 30, 17, 0.6)',
             borderColor: 'rgb(56, 30, 17)',
             borderWidth: 2,
-            tension: 0.1
+            tension: 0.1,
+            maxBarThickness: 80
         }]
     };
 
@@ -476,14 +510,20 @@
                 }
             }).then(function (response) {
                 if (response.ok) {
-                    response.json().then((resultado) => {
+                    response.json().then(function (resultado) {
                         console.log(resultado);
 
-                        const pontuacao = resultado.map(dado => dado.pontuacao);
-                        const quantidadeUsuarios = resultado.map(dado => dado.quantidade);
 
-                        myChartGeral.data.labels = pontuacao;
-                        myChartGeral.data.datasets[0].data = quantidadeUsuarios;
+                        for (let i = 0; i < resultado.length; i++) {
+                            labelsGeral.push(resultado[i].pontuacao);
+                            dataGeral.datasets[0].data.push(resultado[i].quantidade);
+                        }
+
+                        // const pontuacao = resultado.map(dado => dado.pontuacao);
+                        // const quantidadeUsuarios = resultado.map(dado => dado.quantidade);
+
+                        // myChartGeral.data.labels = pontuacao;
+                        // myChartGeral.data.datasets[0].data = quantidadeUsuarios;
 
                         myChartGeral.update();
                     });
@@ -491,6 +531,53 @@
                     console.error('Nenhum dado encontrado ou erro na API');
                 }
             })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function kpiUsuarios() {
+        fetch("/usuarios/kpiUsuarios",
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resultado) {
+                        console.log(resultado);
+
+                        kpi.innerHTML = `Quantidade de usuários cadastrados: <span>${resultado[0].quantidade}</span>`
+
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+    }
+
+    function listarMedia() {
+        fetch("/quiz/listarMedia", {
+            method: "GET",
+            // headers: {
+            //     "Content-Type": "application/json"
+            // }
+        }).then(function (response) {
+            console.log('aaaa', response)
+            if (response.ok) {
+                response.json().then(function (resultado) {
+                    console.log(resultado);
+
+                    mediaQuiz.innerHTML = `Média de acertos no quiz: <span>${resultado[0].mediapontuacao}</span>`;
+                })
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });

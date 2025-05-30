@@ -122,9 +122,21 @@ function exibirGrafico2(req, res) {
 
 }
 
+function kpiUsuarios(req, res) {
+    usuarioModel.kpiUsuarios()
+        .then(function (resposta) {
+            if (resposta.length > 0) {
+                res.status(200).json(resposta);
+            } else {
+                res.status(204).send("nenhum resultado encontrado");
+            }
+        })
+}
+
 module.exports = {
     autenticar,
     cadastrar,
     exibirGrafico1,
-    exibirGrafico2
+    exibirGrafico2,
+    kpiUsuarios
 }

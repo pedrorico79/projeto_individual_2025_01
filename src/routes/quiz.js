@@ -18,5 +18,8 @@ router.get("/listarGeral", function (req, res) {
     quizController.listarGeral(req, res);
 });
 
+router.get("/listarMedia", function (req, res) {
+    quizController.listarMedia(req, res);
+});
 
 module.exports = router;

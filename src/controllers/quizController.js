@@ -41,8 +41,17 @@ function cadastrar(req, res) {
     }
 }
 
+function listarMedia(req, res) {
+    quizModel.listarMedia().then(function (resultado) {
+        res.status(200).send(resultado);
+    }).catch(function (erro) {
+        res.status(500).json(erro.sqlMessage);
+    })
+}
+
 module.exports = {
     cadastrar,
     listarIndividual,
-    listarGeral
+    listarGeral,
+    listarMedia
 }
