@@ -175,12 +175,7 @@
 
 
     function exibirGrafico1() {
-        // fetch("/usuarios/exibirGrafico1", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     }
-        // })
+
         fetch("/usuarios/exibirGrafico1")
             .then(function (resposta) {
                 console.log("Função do exibirGrafico1");
@@ -192,18 +187,10 @@
 
                         console.log(resposta);
 
-                        // let naipesArray = [];
-                        // let quantidadeUsuariosArray = [];
                         for (let i = 0; i < resposta.length; i++) {
                             labels1.push(resposta[i].naipe);
                             data1.datasets[0].data.push(resposta[i].quantidade);
                         }
-
-                        // const naipes = resposta.map(dado => dado.naipe);
-                        // const quantidadeUsuarios = resposta.map(dado => dado.quantidade);
-
-                        // myChart1.data.labels = naipes;
-                        // myChart1.data.datasets[0].data = quantidadeUsuarios;
 
                         myChart1.update();
                     });
@@ -232,7 +219,8 @@
             backgroundColor: 'rgba(56, 30, 17, 0.6)',
             borderColor: 'rgb(56, 30, 17)',
             borderWidth: 2,
-            tension: 0.1
+            tension: 0.1,
+            maxBarThickness: 80
         }]
     };
 
@@ -273,12 +261,7 @@
 
 
     function exibirGrafico2() {
-        // fetch("/usuarios/exibirGrafico2", {
-        //     method: "POST",
-        //     headers: {
-        //         "Content-Type": "application/json"
-        //     }
-        // })
+
         fetch("/usuarios/exibirGrafico2")
             .then(function (resposta) {
                 console.log("Função do exibirGrafico2");
@@ -298,12 +281,6 @@
                             labels2.push(instrumentoArray[j]);
                             data2.datasets[0].data.push(quantidadeArray[j]);
                         }
-
-                        // const instrumento = resultado.map(dado => dado.instrumento);
-                        // const quantidadeUsuarios = resultado.map(dado => dado.quantidade);
-
-                        // myChart2.data.labels = instrumento;
-                        // myChart2.data.datasets[0].data = quantidadeUsuarios;
 
                         myChart2.update();
                     });
@@ -519,12 +496,6 @@
                             dataGeral.datasets[0].data.push(resultado[i].quantidade);
                         }
 
-                        // const pontuacao = resultado.map(dado => dado.pontuacao);
-                        // const quantidadeUsuarios = resultado.map(dado => dado.quantidade);
-
-                        // myChartGeral.data.labels = pontuacao;
-                        // myChartGeral.data.datasets[0].data = quantidadeUsuarios;
-
                         myChartGeral.update();
                     });
                 } else {
@@ -561,23 +532,19 @@
     }
 
     function listarMedia() {
-        fetch("/quiz/listarMedia", {
-            method: "GET",
-            // headers: {
-            //     "Content-Type": "application/json"
-            // }
-        }).then(function (response) {
-            console.log('aaaa', response)
-            if (response.ok) {
-                response.json().then(function (resultado) {
-                    console.log(resultado);
+        fetch("/quiz/listarMedia")
+            .then(function (response) {
+                console.log('aaaa', response)
+                if (response.ok) {
+                    response.json().then(function (resultado) {
+                        console.log(resultado);
 
-                    mediaQuiz.innerHTML = `Média de acertos no quiz: <span>${resultado[0].mediapontuacao}</span>`;
-                })
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
+                        mediaQuiz.innerHTML = `Média de acertos no quiz: <span>${resultado[0].mediapontuacao}</span>`;
+                    })
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
