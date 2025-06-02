@@ -287,17 +287,24 @@ a {
     border-top: 5px inset rgb(245, 235, 220);
     /* border-bottom: 5px outset rgb(245, 235, 220); */
     display: flex;
-    gap: 50px;
+    flex-direction: column;
+    /* gap: 10px; */
     text-align: justify;
 }
 
-.me-informacoes p {
+.me-informacoes-sec {
     background-color: rgba(49, 34, 19, 0.5);
     padding: 15px;
     border-radius: 25px;
     text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
 }
 
+.me-informacoes p {
+    /* background-color: rgba(49, 34, 19, 0.5); */
+    padding: 15px;
+    border-radius: 25px;
+    text-shadow: 4px 4px 20px rgba(0, 0, 0, 0.7);
+}
 
 /* fotos e videos */
 .videos2 {
