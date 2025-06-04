@@ -465,7 +465,7 @@ a {
 
 /* index info e curiosidades */
 .informacoes {
-    background-color: #4b3a30;
+    background-color: #513626;
     border-top: 5px inset rgb(245, 235, 220);
     border-bottom: 5px outset rgb(245, 235, 220);
 }
@@ -522,11 +522,11 @@ a {
 
 .flip-card-front {
     background-color: rgb(245, 235, 220);
-    color: #333;
+    color: rgb(51, 27, 13);
 }
 
 .flip-card-back {
-    background-color: #333;
+    background-color: rgb(51, 27, 13);
     color: rgb(245, 235, 220);
 }
 

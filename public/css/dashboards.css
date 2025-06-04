@@ -461,12 +461,12 @@ canvas {
 #kpi,
 #mediaQuiz {
   margin: 5px;
-  padding: 10px;
+  padding: 15px;
   border: 3px solid rgb(69, 36, 19);
   font-size: 20px;
   border-radius: 35px;
   background-color: rgb(245, 235, 220);
-  ;
+  text-align: center;
 }
 
 #kpi span,
