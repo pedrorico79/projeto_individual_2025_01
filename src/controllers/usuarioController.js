@@ -1,7 +1,6 @@
 var usuarioModel = require("../models/usuarioModel");
-var aquarioModel = require("../models/aquarioModel");
 
-// ??
+
 function autenticar(req, res) {
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
@@ -54,9 +53,7 @@ function cadastrar(req, res) {
     var naipe = req.body.naipeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
-    /*var fkEmpresa = req.body.idEmpresaVincularServer;*/
 
-    // Faça as validações dos valores
     if (nome == undefined) {
         res.status(400).send("Seu nome está undefined!");
     } else if (sobrenome == undefined) {

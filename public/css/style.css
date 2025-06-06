@@ -16,6 +16,10 @@ header {
     padding: 5px;
 }
 
+a img{
+    vertical-align: middle;
+}
+
 .img-logo {
     height: 64px;
     width: 64px;

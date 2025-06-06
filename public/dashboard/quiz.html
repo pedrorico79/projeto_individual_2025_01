@@ -352,11 +352,11 @@
         const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
 
         if (porcentagemFinalDeAcertos <= 0.3) {
-            textoParaMensagemFinal = `<a href="../assets/recursos/" style="color:inherit;">Acesse</a> a documentação para aprender mais!`
+            textoParaMensagemFinal = `<a href="../assets/recursos/" style="color:inherit;" target="_blank">Acesse</a> a documentação para aprender mais!`
             classComCoresParaMensagemFinal = "text-danger-with-bg"
         }
         else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.85) {
-            textoParaMensagemFinal = `Boa! <a href="../assets/recursos/" style="color:inherit;">Acesse</a> a documentação para aprender mais!`
+            textoParaMensagemFinal = `Boa! <a href="../assets/recursos/" style="color:inherit;" target="_blank">Acesse</a> a documentação para aprender mais!`
             classComCoresParaMensagemFinal = "text-warning-with-bg"
         }
         else if (porcentagemFinalDeAcertos >= 0.85) {
