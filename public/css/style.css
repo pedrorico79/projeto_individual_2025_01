@@ -491,11 +491,11 @@ a {
 }
 
 .flip-card:hover .flip-card-inner {
-    transform: rotateY(-180deg);
+    transform: rotateY(-540deg);
 }
 
 .flip-card .flip-card-back {
-    transform: rotateY(-180deg);
+    transform: rotateY(-540deg);
 }
 
 .flip-card-inner {
@@ -503,7 +503,7 @@ a {
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 1s;
+    transition: transform 2.5s;
     transform-style: preserve-3d;
 }
 
